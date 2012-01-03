@@ -102,21 +102,25 @@ D:RegisterEvent("VARIABLES_LOADED")
 D:RegisterEvent("CVAR_UPDATE")
 D:SetScript("OnEvent", function(self, event, ...)
 	if event == "VARIABLES_LOADED" then
-		if not ColourblindModeDB then ColourblindModeDB = "0" end
+		if GetCVar("colorblindMode") == "1" then
+			if not ColourblindModeDB then ColourblindModeDB = "0" end
 
-		ConsoleExec("colorblindshader "..ColourblindModeDB)
-
-		if GetCVar("colorblindMode") == "0" then UIDropDownMenu_DisableDropDown(self)
-		else UIDropDownMenu_EnableDropDown(self) end
-
-		self:UnregisterEvent(event)
-
+			ConsoleExec("colorblindshader "..ColourblindModeDB)
+			UIDropDownMenu_EnableDropDown(self)
+		else
+			ConsoleExec("colorblindshader 0")
+			UIDropDownMenu_DisableDropDown(self)
+		end
 	elseif event == "CVAR_UPDATE" then
 		local key, value = ...
 
 		if key == "USE_COLORBLIND_MODE" then
-			if value == "0" then UIDropDownMenu_DisableDropDown(self)
-			else UIDropDownMenu_EnableDropDown(self) end
+			if value == "1" then
+				UIDropDownMenu_EnableDropDown(self)
+			else
+				ConsoleExec("colorblindshader 0")
+				UIDropDownMenu_DisableDropDown(self)
+			end
 		end
 	end
 end)
