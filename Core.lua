@@ -16,7 +16,7 @@ local function Initialize()
 	info.func = Click
 
 	-- Level 0
-	info.text = "None (default)"
+	info.text = "None"
 	info.value = "0"
 
 	if info.value == selectedValue then info.checked = 1
