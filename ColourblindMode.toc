@@ -1,0 +1,6 @@
+## Interface: 40300
+## Title: Colourblind Mode
+## Notes: Allows you to tweak the texture shaders to best suit your type of colourblindness.
+## SavedVariables: ColourblindModeDB
+
+Core.lua
