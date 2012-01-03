@@ -5,16 +5,22 @@ local D = CreateFrame("Frame", "InterfaceOptionsHelpPanelColorblindModeDropDown"
 local function Click(self)
 	ColourblindModeDB = self.value
 	ConsoleExec("colorblindshader "..ColourblindModeDB)
+
+	UIDropDownMenu_SetSelectedValue(D, ColourblindModeDB)
 end
 
 local function Initialize()
+	local selectedValue = UIDropDownMenu_GetSelectedValue(InterfaceOptionsHelpPanelColorblindModeDropDown)
 	local info = UIDropDownMenu_CreateInfo()
 
 	info.func = Click
 
 	-- Level 0
-	info.text = "Disabled (default)"
+	info.text = "None (default)"
 	info.value = "0"
+
+	if info.value == selectedValue then info.checked = 1
+	else info.checked = nil end
 
 	UIDropDownMenu_AddButton(info)
 
@@ -22,11 +28,17 @@ local function Initialize()
 	info.text = "Protanopia"
 	info.value = "1"
 
+	if info.value == selectedValue then info.checked = 1
+	else info.checked = nil end
+
 	UIDropDownMenu_AddButton(info)
 
 	-- Level 2
 	info.text = "Protanomaly"
 	info.value = "2"
+
+	if info.value == selectedValue then info.checked = 1
+	else info.checked = nil end
 
 	UIDropDownMenu_AddButton(info)
 
@@ -34,11 +46,17 @@ local function Initialize()
 	info.text = "Deuteranopia"
 	info.value = "3"
 
+	if info.value == selectedValue then info.checked = 1
+	else info.checked = nil end
+
 	UIDropDownMenu_AddButton(info)
 
 	-- Level 4
 	info.text = "Deuteranomaly"
 	info.value = "4"
+
+	if info.value == selectedValue then info.checked = 1
+	else info.checked = nil end
 
 	UIDropDownMenu_AddButton(info)
 
@@ -46,11 +64,17 @@ local function Initialize()
 	info.text = "Tritanopia"
 	info.value = "5"
 
+	if info.value == selectedValue then info.checked = 1
+	else info.checked = nil end
+
 	UIDropDownMenu_AddButton(info)
 
 	-- Level 6
 	info.text = "Tritanomaly"
 	info.value = "6"
+
+	if info.value == selectedValue then info.checked = 1
+	else info.checked = nil end
 
 	UIDropDownMenu_AddButton(info)
 
@@ -58,18 +82,24 @@ local function Initialize()
 	info.text = "Achromatopsia"
 	info.value = "7"
 
+	if info.value == selectedValue then info.checked = 1
+	else info.checked = nil end
+
 	UIDropDownMenu_AddButton(info)
 
 	-- Level 8
 	info.text = "Achromatomaly"
 	info.value = "8"
 
+	if info.value == selectedValue then info.checked = 1
+	else info.checked = nil end
+
 	UIDropDownMenu_AddButton(info)
 end
 
 
 D:RegisterEvent("VARIABLES_LOADED")
-D:SetScript("OnEvent", function()
+D:SetScript("OnEvent", function(self, event, ...)
 	if not ColourblindModeDB then ColourblindModeDB = "0" end
 
 	ConsoleExec("colorblindshader "..ColourblindModeDB)
@@ -77,10 +107,11 @@ end)
 
 
 InterfaceOptionsHelpPanel:SetScript("OnShow", function()
-	D:SetPoint("TOPLEFT", InterfaceOptionsHelpPanelColorblindMode, "TOPRIGHT", 150, -2)
+	D:SetPoint("TOPLEFT", InterfaceOptionsHelpPanelColorblindMode, "TOPRIGHT", 150, 3)
 
 	UIDropDownMenu_SetWidth(D, 150)
 	UIDropDownMenu_Initialize(D, Initialize)
+	UIDropDownMenu_SetSelectedValue(D, ColourblindModeDB)
 
 	InterfaceOptionsHelpPanel:SetScript("OnShow", nil)
 end)
