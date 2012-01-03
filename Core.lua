@@ -127,7 +127,10 @@ end)
 
 
 InterfaceOptionsHelpPanel:SetScript("OnShow", function()
-	D:SetPoint("TOPLEFT", InterfaceOptionsHelpPanelColorblindMode, "TOPRIGHT", 150, 3)
+	D:SetPoint("TOPLEFT", InterfaceOptionsHelpPanelColorblindMode, "BOTTOMLEFT")
+
+	InterfaceOptionsHelpPanelMovePad:ClearAllPoints()
+	InterfaceOptionsHelpPanelMovePad:SetPoint("TOPLEFT", D, "BOTTOMLEFT", 0, -10)
 
 	UIDropDownMenu_SetWidth(D, 150)
 	UIDropDownMenu_Initialize(D, Initialize)
