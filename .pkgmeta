@@ -1,0 +1,6 @@
+
+package-as: ColourblindMode
+
+manual-changelog: CHANGELOG.txt
+
+license-output: LICENSE.txt
