@@ -3,10 +3,8 @@ local D = CreateFrame("Frame", "InterfaceOptionsHelpPanelColorblindModeDropDown"
 
 
 local function Click(self)
-	ColourblindModeDB = self.value
-	ConsoleExec("colorblindshader "..ColourblindModeDB)
-
-	UIDropDownMenu_SetSelectedValue(D, ColourblindModeDB)
+	ConsoleExec("colorblindshader " .. self.value)
+	UIDropDownMenu_SetSelectedValue(D, self.value)
 end
 
 local function Initialize()
@@ -98,29 +96,16 @@ local function Initialize()
 end
 
 
-D:RegisterEvent("VARIABLES_LOADED")
 D:RegisterEvent("CVAR_UPDATE")
-D:SetScript("OnEvent", function(self, event, ...)
-	if event == "VARIABLES_LOADED" then
-		if GetCVar("colorblindMode") == "1" then
-			if not ColourblindModeDB then ColourblindModeDB = "0" end
-
-			ConsoleExec("colorblindshader "..ColourblindModeDB)
+D:SetScript("OnEvent", function(self, event, key, value)
+	if key == "USE_COLORBLIND_MODE" then
+		if value == "1" then
 			UIDropDownMenu_EnableDropDown(self)
 		else
 			ConsoleExec("colorblindshader 0")
-			UIDropDownMenu_DisableDropDown(self)
-		end
-	elseif event == "CVAR_UPDATE" then
-		local key, value = ...
 
-		if key == "USE_COLORBLIND_MODE" then
-			if value == "1" then
-				UIDropDownMenu_EnableDropDown(self)
-			else
-				ConsoleExec("colorblindshader 0")
-				UIDropDownMenu_DisableDropDown(self)
-			end
+			UIDropDownMenu_SetSelectedValue(D, "0")
+			UIDropDownMenu_DisableDropDown(self)
 		end
 	end
 end)
