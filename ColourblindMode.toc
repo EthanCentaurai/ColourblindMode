@@ -1,4 +1,4 @@
-## Interface: 40300
+## Interface: 50200
 ## Title: Colourblind Mode
 ## Notes: Allows you to tweak the texture shaders to best suit your type of colourblindness.
 
