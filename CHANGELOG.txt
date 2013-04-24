@@ -1,3 +1,6 @@
+Version 1.0.2
+- Updated for WoW Patch 5.2.
+
 Version 1.0.1
 - Removed SavedVariables as Blizzard have fixed a bug that prevented the shader setting from being saved between sessions.
 - Some small code tidy up.
