@@ -3,7 +3,7 @@ local D = CreateFrame("Frame", "InterfaceOptionsHelpPanelColorblindModeDropDown"
 
 
 local function Click(self)
-	ConsoleExec("colorblindshader " .. self.value)
+	ConsoleExec("colorblindsimulator " .. self.value)
 	UIDropDownMenu_SetSelectedValue(D, self.value)
 end
 
@@ -102,7 +102,7 @@ D:SetScript("OnEvent", function(self, event, key, value)
 		if value == "1" then
 			UIDropDownMenu_EnableDropDown(self)
 		else
-			ConsoleExec("colorblindshader 0")
+			ConsoleExec("colorblindsimulator 0")
 
 			UIDropDownMenu_SetSelectedValue(D, "0")
 			UIDropDownMenu_DisableDropDown(self)
