@@ -121,5 +121,9 @@ InterfaceOptionsHelpPanel:SetScript("OnShow", function()
 	UIDropDownMenu_Initialize(D, Initialize)
 	UIDropDownMenu_SetSelectedValue(D, GetCVar("colorblindsimulator") or "0")
 
+	if ENABLE_COLORBLIND_MODE == "0" then
+		UIDropDownMenu_DisableDropDown(D)
+	end
+
 	InterfaceOptionsHelpPanel:SetScript("OnShow", nil)
 end)
