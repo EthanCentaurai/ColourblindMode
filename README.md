@@ -1,5 +1,5 @@
-﻿Colourblind Mode
-================
+﻿Colourblind Simulator 2015
+==========================
 
 
 What it does
@@ -31,7 +31,7 @@ The options available are as follows:
 Translations
 ------------
 
-Colourblind Mode should work for everyone regardless of language, but the text in the menu is currently only in English.
+Colourblind Simulator 2015 should work for everyone regardless of language, but the text in the menu is currently only in English.
 
 
 Feedback

@@ -1,5 +1,5 @@
 ## Interface: 60000
-## Title: Colourblind Mode
-## Notes: Allows you to tweak the texture shaders to best suit your type of colourblindness.
+## Title: Colourblind Simulator 2015
+## Notes: Compliments the colourblind mode "shader" options by making them accessible from the Interface menu.
 
 Core.lua
