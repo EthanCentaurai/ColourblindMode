@@ -119,7 +119,7 @@ InterfaceOptionsHelpPanel:SetScript("OnShow", function()
 
 	UIDropDownMenu_SetWidth(D, 150)
 	UIDropDownMenu_Initialize(D, Initialize)
-	UIDropDownMenu_SetSelectedValue(D, ColourblindModeDB)
+	UIDropDownMenu_SetSelectedValue(D, GetCVar("colorblindsimulator") or "0")
 
 	InterfaceOptionsHelpPanel:SetScript("OnShow", nil)
 end)
